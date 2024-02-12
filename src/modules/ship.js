@@ -1,8 +1,8 @@
-class Ship {
+export default class Ship {
   constructor(length, hits = 0) {
     this.length = length;
     this.hits = hits;
-    this.Sunk = false;
+    this.sunk = false;
   }
 
   hit() {
@@ -13,4 +13,3 @@ class Ship {
     return this.hits >= this.length;
   }
 }
-export default Ship;
