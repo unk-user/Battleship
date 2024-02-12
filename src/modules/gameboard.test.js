@@ -6,14 +6,14 @@ describe('ship placement', () => {
     gameboard = new GameBoard();
   });
 
-  test('new ship placed horizontally', () => {
+  test('can place ships horizontally', () => {
     gameboard.placeShip([5, 5], 'H', 4);
     expect(gameboard.board[5][5]).toEqual({ length: 4, hits: 0, sunk: false });
     expect(gameboard.board[6][5]).toEqual({ length: 4, hits: 0, sunk: false });
     expect(gameboard.board[7][5]).toEqual({ length: 4, hits: 0, sunk: false });
     expect(gameboard.board[8][5]).toEqual({ length: 4, hits: 0, sunk: false });
   });
-  test('new ship placed vertically', () => {
+  test('can place ships vertically', () => {
     gameboard.placeShip([2, 2], 'V', 3);
     expect(gameboard.placeShip([6, 1], 'V', 4)).toBe(true);
     expect(gameboard.board[2][2]).toEqual({ length: 3, hits: 0, sunk: false });
@@ -21,23 +21,23 @@ describe('ship placement', () => {
     expect(gameboard.board[2][4]).toEqual({ length: 3, hits: 0, sunk: false });
   });
 
-  test('ship is not allowed to exceed gameboard', () => {
+  test('prevents placing ships outside board', () => {
     expect(gameboard.placeShip([8, 6], 'H', 4)).toBe(false);
     expect(gameboard.placeShip([3, 9], 'V', 3)).toBe(false);
   });
 
-  test('cannot intersect two ships', () => {
+  test('prevents placing ships on taken fields', () => {
     gameboard.placeShip([2, 5], 'H', 4);
     expect(gameboard.placeShip([1, 5], 'H', 4)).toBe(false);
   });
-  test('cannot place near other ship', () => {
+  test('prevents placing ships near taken fields', () => {
     gameboard.placeShip([1, 5], 'H', 4);
     expect(gameboard.board[1][5]).toEqual({ length: 4, hits: 0, sunk: false });
     expect(gameboard.placeShip([2, 4], 'H', 4)).toBe(false);
   });
 });
 
-describe('receive attack', () => {
+describe('receive an attack', () => {
   let gameboard;
   beforeEach(() => {
     gameboard = new GameBoard();
@@ -45,7 +45,7 @@ describe('receive attack', () => {
     gameboard.receiveAttack([5, 6]);
   });
 
-  test('ship attacked', () => {
+  test('increases hits', () => {
     expect(gameboard.board[5][5]).toEqual({ length: 4, hits: 1, sunk: false });
     expect(gameboard.receiveAttack([6, 5])).toBe(false);
   });

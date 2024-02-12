@@ -9,13 +9,13 @@ describe('Ship', () => {
     testShipTwo = new Ship(2);
   });
 
-  test('hit method is working', () => {
+  test('increases hits', () => {
     testShip.hit();
     expect(testShip.hits).toBe(1);
     testShip.hit();
     expect(testShip.hits).toBe(2);
   });
-  test('isSunk method is working', () => {
+  test('checks for sunken ship', () => {
     testShip.hit();
     testShipTwo.hit();
     expect(testShip.isSunk()).toBe(true);

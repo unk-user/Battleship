@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 export default class Ship {
   constructor(length, hits = 0) {
     this.length = length;
@@ -10,6 +11,11 @@ export default class Ship {
   }
 
   isSunk() {
-    return this.hits >= this.length;
+    if (this.hits >= this.length) {
+      this.sunk = true;
+      return this.sunk;
+    } else {
+      return false;
+    }
   }
 }

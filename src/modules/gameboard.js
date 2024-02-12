@@ -71,6 +71,7 @@ export default class GameBoard {
       this.hitMap.add(`${x}${y}`);
       if (this.board[x][y]) {
         this.board[x][y].hit();
+        this.board[x][y].isSunk();
         return 'hit';
       }
     }
