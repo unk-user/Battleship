@@ -23,7 +23,15 @@ section {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
 }
-
+.square {
+  background-color: rgb(92, 91, 91);
+}
+#ship {
+  background-color: white;
+}
+.hit {
+  background-color: red;
+}
 
 footer {
   height: 100px;
