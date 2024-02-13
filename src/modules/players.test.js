@@ -25,9 +25,12 @@ describe('computerTurn', () => {
     playerBoard.placeShip([2, 0], 'V', 4);
     playerBoard.placeShip([4, 0], 'V', 3);
     playerBoard.placeShip([6, 0], 'V', 3);
+    computerTurn(0, 0);
+    computerTurn();
   });
 
-  test('computer can play a position randomly', () => {
+  test('computer chooses neighbours of previous hit position', () => {
+    expect(playerBoard.board[0][0]).toEqual({ length: 4, hits: 2, sunk: false });
     expect(computerTurn()).toBe('hit');
   });
 });

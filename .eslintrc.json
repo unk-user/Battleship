@@ -8,7 +8,10 @@
     "extends": "airbnb",
     "rules": {
         "linebreak-style": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-plusplus": "off",
+        "class-methods-use-this": "off",
+        "consistent-return" : "off"
     },
     "parserOptions": {
         "ecmaVersion": "latest",
