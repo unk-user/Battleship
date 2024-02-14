@@ -22,7 +22,7 @@ export default class Game {
 
   static end = true;
 
-  playerTurn(x, y) {
+  static playerTurn(x, y) {
     if (this.end) return;
     if (!this.computerBoard.hitMap.has(`${x}${y}`)) {
       setTimeout(() => {
@@ -145,9 +145,6 @@ export default class Game {
         playerDiv.addEventListener('click', () => {
           this.placeSelectedShip([j, i]);
         });
-        if (this.computerBoard.board[j][i]) {
-          computerDiv.setAttribute('id', 'ship');
-        }
         playerGrid.appendChild(playerDiv);
         computerGrid.appendChild(computerDiv);
       }
@@ -185,20 +182,24 @@ export default class Game {
   static activateGameControls() {
     const play = document.querySelector('#play');
     const replay = document.querySelector('#replay');
-    this.selectionShips = [2, 2, 3, 4, 4];
     replay.addEventListener('click', () => {
+      this.end = true;
       this.initializeBoards();
       this.initializeGrid();
+      this.selectionShips = [2, 2, 3, 4, 4];
     });
     play.addEventListener('click', () => {
-      this.end = false;
-      this.refreshGrid();
+      if (this.selectionShips.length === 0) {
+        this.end = false;
+        this.refreshGrid();
+      }
     });
     document.addEventListener('keypress', (e) => {
       if (e.key === 'R' || e.key === 'r') {
         this.playerDirection = this.playerDirection === 'H' ? 'V' : 'H';
       }
     });
+    this.selectShip();
   }
 
   static placeSelectedShip(coords) {
@@ -210,7 +211,6 @@ export default class Game {
       this.playerShips.push(this.playerBoard.board[x][y]);
       this.selectionShips.splice(this.selectedShipIndex, 1);
     }
-    this.initializeGrid();
     this.refreshGrid();
   }
 
