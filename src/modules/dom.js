@@ -5,8 +5,6 @@ class DOMInteractions {
   constructor() {
     this.game = new Game();
   }
-
-  
 }
 const dom = new DOMInteractions();
 dom.intialiseGrid();
