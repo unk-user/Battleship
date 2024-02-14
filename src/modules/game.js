@@ -194,6 +194,11 @@ export default class Game {
       this.end = false;
       this.refreshGrid();
     });
+    document.addEventListener('keypress', (e) => {
+      if (e.key === 'R' || e.key === 'r') {
+        this.playerDirection = this.playerDirection === 'H' ? 'V' : 'H';
+      }
+    });
   }
 
   static placeSelectedShip(coords) {
@@ -215,14 +220,6 @@ export default class Game {
       variantBtn.addEventListener('click', () => {
         this.selectedShipIndex = this.selectionShips.indexOf(index + 2);
       });
-    });
-  }
-
-  static changeDirection() {
-    document.addEventListener('keypress', (e) => {
-      if (e.key === 'R' || e.key === 'r') {
-        this.playerDirection = this.playerDirection === 'H' ? 'V' : 'H';
-      }
     });
   }
 }
