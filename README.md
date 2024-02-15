@@ -1,8 +1,8 @@
-__# Battleship__
-**## Description**  
+# Battleship__   
+## Description**   
 This is a simple implementation of the classic Battleship game using HTML, CSS, and JavaScript. It allows players to place their ships on a grid and take turns attacking their opponent's grid to sink their ships.  
 
-**## Features**  
+## Features**   
 - Player can place ships on a grid.  
 - Player can switch the orientation of ships before placing them. 
 - Computer AI opponent.  
